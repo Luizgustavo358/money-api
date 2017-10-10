@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * Created by luiz on 09/10/17.
  */
-public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
+public interface PessoaRepository extends JpaRepository<Pessoa, Long>
+{
 }
