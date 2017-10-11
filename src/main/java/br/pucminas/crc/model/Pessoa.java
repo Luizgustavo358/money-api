@@ -25,7 +25,7 @@ public class Pessoa
     @Embedded
     private Endereco endereco;
 
-    public Long getCondigo() {
+    public Long getCodigo() {
         return codigo;
     }
 
