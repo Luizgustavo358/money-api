@@ -25,6 +25,7 @@ public class LancamentoService
     {
         Pessoa pessoa = pessoaRepository.findOne(lancamento.getPessoa().getCodigo());
 
+        // verifica se existe a pessoa
         if(pessoa == null || pessoa.isInativo())
         {
             throw new PessoaInexistenteOuInativaException();
