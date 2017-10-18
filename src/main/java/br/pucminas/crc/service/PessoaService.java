@@ -5,6 +5,8 @@ import br.pucminas.crc.repository.PessoaRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class PessoaService
+public class PessoaService implements PersonService
 {
     @Autowired
     private PessoaRepository pessoaRepository;
@@ -46,4 +48,10 @@ public class PessoaService
 
         return pessoaSalva;
     }// end buscarPessoaPeloCodigo()
+
+    @Override
+    public Page<Pessoa> listAllByPage(Pageable pageable)
+    {
+        return pessoaRepository.findAll(pageable);
+    }// end listAllbyPage()
 }// end class PessoaService
