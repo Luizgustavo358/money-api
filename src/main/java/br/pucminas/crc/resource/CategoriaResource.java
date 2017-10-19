@@ -51,4 +51,11 @@ public class CategoriaResource
     {
         return categoriaRepository.findOne(codigo);
     }// end buscarPeloCodigo()
+
+    @DeleteMapping("/{codigo}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void remover(@PathVariable Long codigo)
+    {
+        categoriaRepository.delete(codigo);
+    }// end remover()
 }// end class

@@ -4,8 +4,11 @@ import br.pucminas.crc.model.Lancamento;
 import br.pucminas.crc.model.Pessoa;
 import br.pucminas.crc.repository.LancamentoRepository;
 import br.pucminas.crc.repository.PessoaRepository;
+import br.pucminas.crc.repository.filter.LancamentoFilter;
 import br.pucminas.crc.service.exception.PessoaInexistenteOuInativaException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,7 +16,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class LancamentoService
+public class LancamentoService implements LancamentosService
 {
     @Autowired
     private PessoaRepository pessoaRepository;
@@ -33,4 +36,10 @@ public class LancamentoService
 
         return lancamentoRepository.save(lancamento);
     }// end salvar()
+
+    @Override
+    public Page<Lancamento> listAllByPage(LancamentoFilter lancamentoFilter, Pageable pageable)
+    {
+        return lancamentoRepository.findAll(pageable);
+    }// end listAllbyPage()
 }// end class LancamentoService
