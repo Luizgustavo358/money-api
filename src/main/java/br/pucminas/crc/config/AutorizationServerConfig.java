@@ -9,7 +9,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 /**
  * Created by luiz on 23/10/17.
@@ -29,20 +30,34 @@ public class AutorizationServerConfig extends AuthorizationServerConfigurerAdapt
                 .withClient("angular")
                 .secret("@ngul@r0")
                 .scopes("read", "write")
-                .authorizedGrantTypes("password")
-                .accessTokenValiditySeconds(1800);
+                .authorizedGrantTypes("password", "refresh_token")
+                .accessTokenValiditySeconds(20)
+                .refreshTokenValiditySeconds(3600 * 24);
     }// end configure()
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception
     {
         endpoints.tokenStore(tokenStore())
+                .accessTokenConverter(accessTokenConverter())
+                .reuseRefreshTokens(false)
                 .authenticationManager(authenticationManager);
     }// end configure()
 
     @Bean
+    public JwtAccessTokenConverter accessTokenConverter()
+    {
+        JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
+
+        // setando a chave para validar o token
+        accessTokenConverter.setSigningKey("algaworks");
+
+        return accessTokenConverter;
+    }// end accessTokenConverter()
+
+    @Bean
     public TokenStore tokenStore()
     {
-        return new InMemoryTokenStore();
+        return new JwtTokenStore(accessTokenConverter());
     }// end tokenStore()
 }// end class AutorizationServerConfig
