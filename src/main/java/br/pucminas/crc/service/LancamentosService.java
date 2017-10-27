@@ -2,6 +2,7 @@ package br.pucminas.crc.service;
 
 import br.pucminas.crc.model.Lancamento;
 import br.pucminas.crc.repository.filter.LancamentoFilter;
+import br.pucminas.crc.repository.projection.ResumoLancamento;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -11,4 +12,6 @@ import org.springframework.data.domain.Pageable;
 public interface LancamentosService
 {
     Page<Lancamento> listAllByPage(LancamentoFilter lancamentoFilter, Pageable pageable);
+
+    Page<ResumoLancamento> resumir(LancamentoFilter lancamentoFilter, Pageable pageable);
 }// end interface LancamentosService

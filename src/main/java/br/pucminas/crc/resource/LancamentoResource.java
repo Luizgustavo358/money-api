@@ -5,6 +5,7 @@ import br.pucminas.crc.exceptionhandler.AlgamoneyExceptionHandler;
 import br.pucminas.crc.model.Lancamento;
 import br.pucminas.crc.repository.LancamentoRepository;
 import br.pucminas.crc.repository.filter.LancamentoFilter;
+import br.pucminas.crc.repository.projection.ResumoLancamento;
 import br.pucminas.crc.service.LancamentoService;
 import br.pucminas.crc.service.exception.PessoaInexistenteOuInativaException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -44,12 +46,21 @@ public class LancamentoResource
     private MessageSource messageSource;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
     public Page<Lancamento> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable)
     {
         return lancamentoService.listAllByPage(lancamentoFilter, pageable);
-    }// end listar()
+    }// end pesquisar()
+
+    @GetMapping(params = "resumo")
+    @PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
+    public Page<ResumoLancamento> resumir(LancamentoFilter lancamentoFilter, Pageable pageable)
+    {
+        return lancamentoService.resumir(lancamentoFilter, pageable);
+    }// end pesquisar()
 
     @GetMapping("/{codigo}")
+    @PreAuthorize("hasAuthority('ROLE_PESQUISAR_LANCAMENTO') and #oauth2.hasScope('read')")
     public ResponseEntity<Lancamento> buscarPeloCodigo(@PathVariable Long codigo)
     {
         Lancamento lancamento = lancamentoRepository.findOne(codigo);
@@ -58,6 +69,7 @@ public class LancamentoResource
     }// end buscarPeloCodigo()
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_CADASTRAR_LANCAMENTO') and #oauth2.hasScope('write')")
     public ResponseEntity<Lancamento> criar(@Valid @RequestBody Lancamento lancamento, HttpServletResponse response)
     {
         Lancamento lancamentoSalvo = lancamentoService.salvar(lancamento);
@@ -67,6 +79,7 @@ public class LancamentoResource
 
     @DeleteMapping("/{codigo}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PreAuthorize("hasAuthority('ROLE_REMOVER_LANCAMENTO') and #oauth2.hasScope('write')")
     public void remover(@PathVariable Long codigo)
     {
         lancamentoRepository.delete(codigo);

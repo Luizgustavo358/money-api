@@ -5,6 +5,7 @@ import br.pucminas.crc.model.Pessoa;
 import br.pucminas.crc.repository.LancamentoRepository;
 import br.pucminas.crc.repository.PessoaRepository;
 import br.pucminas.crc.repository.filter.LancamentoFilter;
+import br.pucminas.crc.repository.projection.ResumoLancamento;
 import br.pucminas.crc.service.exception.PessoaInexistenteOuInativaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -41,5 +42,11 @@ public class LancamentoService implements LancamentosService
     public Page<Lancamento> listAllByPage(LancamentoFilter lancamentoFilter, Pageable pageable)
     {
         return lancamentoRepository.findAll(pageable);
+    }// end listAllbyPage()
+
+    @Override
+    public Page<ResumoLancamento> resumir(LancamentoFilter lancamentoFilter, Pageable pageable)
+    {
+        return lancamentoRepository.resumir(lancamentoFilter, pageable);
     }// end listAllbyPage()
 }// end class LancamentoService

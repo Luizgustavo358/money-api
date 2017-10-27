@@ -2,6 +2,7 @@ package br.pucminas.crc.repository.lancamento;
 
 import br.pucminas.crc.model.Lancamento;
 import br.pucminas.crc.repository.filter.LancamentoFilter;
+import br.pucminas.crc.repository.projection.ResumoLancamento;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,4 +14,6 @@ import java.util.List;
 public interface LancamentoRepositoryQuery
 {
     Page<Lancamento> filtrar(LancamentoFilter lancamentoFilter, Pageable pageable);
+
+    Page<ResumoLancamento> resumir(LancamentoFilter lancamentoFilter, Pageable pageable);
 }// end interface LancamentoRepositoryQuery
