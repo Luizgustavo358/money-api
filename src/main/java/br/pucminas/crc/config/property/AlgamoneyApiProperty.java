@@ -10,6 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class AlgamoneyApiProperty
 {
     private String originPermitida = "http://localhost:8000";
+
     private final Seguranca seguranca = new Seguranca();
 
     public String getOriginPermitida() {
