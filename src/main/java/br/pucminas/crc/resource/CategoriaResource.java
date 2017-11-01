@@ -9,11 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.net.URI;
 import java.util.List;
 
 /**
@@ -31,12 +29,14 @@ public class CategoriaResource
     @Autowired
     private ApplicationEventPublisher publisher;
 
+
     @GetMapping
     @PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')")
     public List<Categoria> listar()
     {
         return categoriaRepository.findAll();
     }// end listar()
+
 
     @PostMapping
     @PreAuthorize("hasAuthority('ROLE_CADASTRAR_CATEGORIA') and #oauth2.hasScope('write')")
@@ -49,12 +49,14 @@ public class CategoriaResource
         return ResponseEntity.status(HttpStatus.CREATED).body(categoriaSalva);
     }// end criar()
 
+
     @GetMapping("/{codigo}")
     @PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and #oauth2.hasScope('read')")
     public Categoria buscarPeloCodigo(@PathVariable Long codigo)
     {
         return categoriaRepository.findOne(codigo);
     }// end buscarPeloCodigo()
+
 
     @DeleteMapping("/{codigo}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

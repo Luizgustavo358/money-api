@@ -84,4 +84,10 @@ public class PessoaResource
     {
         pessoaService.atualizarPropriedadeAtivo(codigo, ativo);
     }// end atualizarPropriedadeAtivo()
+
+    @GetMapping
+    @PreAuthorize("hasAuthority('ROLE_PESQUISAR_PESSOA_PELO_NOME') and #oath2.hasScope('read')")
+    public Page<Pessoa> pesquisar(@RequestParam(required = false, defaultValue = "%") String nome, Pageable pageable) {
+        return pessoaRepository.findByNomeContaining(nome, pageable);
+    }// end pesquisar()
 }// end class PessoaResource
