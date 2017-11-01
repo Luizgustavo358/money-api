@@ -15,7 +15,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -103,11 +102,11 @@ public class AlgamoneyExceptionHandler extends ResponseEntityExceptionHandler
         public String getMensagemUsuario()
         {
             return mensagemUsuario;
-        }
+        }// end getMensagemUsuario()
 
         public String getMensagemDesenvolvedor()
         {
             return mensagemDesenvolvedor;
-        }
+        }// end getMensagemDesenvolvedor()
     }// end class Erro
 }// end class AlgamoneyExceptionHandler

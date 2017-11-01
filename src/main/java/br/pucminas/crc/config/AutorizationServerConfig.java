@@ -1,7 +1,6 @@
 package br.pucminas.crc.config;
 
-import java.util.Arrays;
-
+import br.pucminas.crc.config.token.CustomTokenEnhancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +16,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
-import br.pucminas.crc.config.token.CustomTokenEnhancer;
+import java.util.Arrays;
 
 /**
  * Created by luiz on 23/10/17.
@@ -85,6 +84,4 @@ public class AutorizationServerConfig extends AuthorizationServerConfigurerAdapt
     {
         return new JwtTokenStore(accessTokenConverter());
     }// end tokenStore()
-
-    
 }// end class AutorizationServerConfig

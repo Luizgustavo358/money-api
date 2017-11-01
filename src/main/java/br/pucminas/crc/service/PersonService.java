@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 /**
  * Created by luiz on 18/10/17.
  */
-interface PersonService
+public interface PersonService
 {
     Page<Pessoa> listAllByPage(Pageable pageable);
 }// end interface PersonService
