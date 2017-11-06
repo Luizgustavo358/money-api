@@ -11,31 +11,32 @@ INSERT INTO pessoa(nome, logradouro, numero, complemento, bairro, cep, cidade, e
   VALUES('Zé', 'Rua C', '5', NULL, 'HUEBR', '20.440-560', 'São Paulo', 'SP', FALSE);
 
 INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo)
-  values ('João Silva', 'Rua do Abacaxi', '10', null, 'Brasil', '38.400-12', 'Uberlândia', 'MG', true);
+VALUES ('João Silva', 'Rua do Abacaxi', '10', NULL, 'Brasil', '38.400-125', 'Uberlândia', 'MG', TRUE);
 
 INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo)
-  values ('Maria Rita', 'Rua do Sabiá', '110', 'Apto 101', 'Colina', '11.400-12', 'Ribeirão Preto', 'SP', true);
+VALUES ('Maria Rita', 'Rua do Sabiá', '110', 'Apto 101', 'Colina', '11.400-123', 'Ribeirão Preto', 'SP', TRUE);
 
 INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo)
-  values ('Pedro Santos', 'Rua da Bateria', '23', null, 'Morumbi', '54.212-12', 'Goiânia', 'GO', true);
+VALUES ('Pedro Santos', 'Rua da Bateria', '23', NULL, 'Morumbi', '54.212-122', 'Goiânia', 'GO', TRUE);
 
 INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo)
-  values ('Ricardo Pereira', 'Rua do Motorista', '123', 'Apto 302', 'Aparecida', '38.400-12', 'Salvador', 'BA', true);
+VALUES ('Ricardo Pereira', 'Rua do Motorista', '123', 'Apto 302', 'Aparecida', '38.400-121', 'Salvador', 'BA', TRUE);
 
 INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo)
-  values ('Josué Mariano', 'Av Rio Branco', '321', null, 'Jardins', '56.400-12', 'Natal', 'RN', true);
+VALUES ('Josué Mariano', 'Av Rio Branco', '321', NULL, 'Jardins', '56.400-121', 'Natal', 'RN', TRUE);
 
 INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo)
-  values ('Pedro Barbosa', 'Av Brasil', '100', null, 'Tubalina', '77.400-12', 'Porto Alegre', 'RS', true);
+VALUES ('Pedro Barbosa', 'Av Brasil', '100', NULL, 'Tubalina', '77.400-124', 'Porto Alegre', 'RS', TRUE);
 
 INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo)
-  values ('Henrique Medeiros', 'Rua do Sapo', '1120', 'Apto 201', 'Centro', '12.400-12', 'Rio de Janeiro', 'RJ', true);
+VALUES ('Henrique Medeiros', 'Rua do Sapo', '1120', 'Apto 201', 'Centro', '12.400-125', 'Rio de Janeiro', 'RJ', TRUE);
 
 INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo)
-  values ('Carlos Santana', 'Rua da Manga', '433', null, 'Centro', '31.400-12', 'Belo Horizonte', 'MG', true);
+VALUES ('Carlos Santana', 'Rua da Manga', '433', NULL, 'Centro', '31.400-123', 'Belo Horizonte', 'MG', TRUE);
 
 INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo)
-  values ('Leonardo Oliveira', 'Rua do Músico', '566', null, 'Segismundo Pereira', '38.400-00', 'Uberlândia', 'MG', true);
+VALUES
+  ('Leonardo Oliveira', 'Rua do Músico', '566', NULL, 'Segismundo Pereira', '38.400-006', 'Uberlândia', 'MG', TRUE);
 
 INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo)
-  values ('Isabela Martins', 'Rua da Terra', '1233', 'Apto 10', 'Vigilato', '99.400-12', 'Manaus', 'AM', true);
+VALUES ('Isabela Martins', 'Rua da Terra', '1233', 'Apto 10', 'Vigilato', '99.400-129', 'Manaus', 'AM', TRUE);

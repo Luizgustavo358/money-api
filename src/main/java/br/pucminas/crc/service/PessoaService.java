@@ -49,6 +49,10 @@ public class PessoaService implements PersonService
         return pessoaSalva;
     }// end buscarPessoaPeloCodigo()
 
+    public Page<Pessoa> buscarPeloNome(String nome, Pageable pageable) {
+        return pessoaRepository.findByNomeContaining(nome, pageable);
+    }// end buscarPeloNome()
+
     @Override
     public Page<Pessoa> listAllByPage(Pageable pageable)
     {
